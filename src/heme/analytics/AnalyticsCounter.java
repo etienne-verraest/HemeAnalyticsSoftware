@@ -21,7 +21,7 @@ public class AnalyticsCounter
 	
 	public static void main(String args[]) throws Exception 
 	{
-		ReadSymptomDataFromFile file = new ReadSymptomDataFromFile("C:\\Users\\108770706\\eclipse-workspace\\HemeAnalyticsSoftware\\ressources\\symptoms.txt");
+		ReadSymptomDataFromFile file = new ReadSymptomDataFromFile("ressources/symptoms.txt");
 		
 		symptoms = file.getSymptoms();
 		symptomsHashMap = file.countSymptoms(symptoms);

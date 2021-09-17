@@ -11,7 +11,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Simple brute force implementation
+ * Implementation de l'interface ISymptomReader
+ * @see ISymptomReader.java
  *
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
@@ -25,9 +26,6 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		this.filepath = filepath;
 	}
 	
-	/**
-	 * @return 
-	 */
 	@Override
 	public List<String> getSymptoms() {
 		ArrayList<String> result = new ArrayList<String>();
@@ -73,7 +71,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	
 	@Override
 	public void writeSymptomToFile(TreeMap<String, Integer> symptomsList) throws IOException {
-		FileWriter writer = new FileWriter("C:\\Users\\108770706\\eclipse-workspace\\HemeAnalyticsSoftware\\ressources\\result.out");
+		FileWriter writer = new FileWriter("ressources/result.out");
 		for(Map.Entry<String, Integer> entry : symptomsList.entrySet()) {
 			writer.write(entry.getKey() + " = " + entry.getValue() + "\n");
 		}

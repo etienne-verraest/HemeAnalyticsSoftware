@@ -5,14 +5,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 /**
- * Implementation de l'interface ISymptomReader
- * @see ISymptomReader.java
+ * Implementing Interface ISymptomReader
+ * @see {@link ISymptomReader}
  *
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
@@ -39,6 +39,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 					result.add(line);
 					line = reader.readLine();
 				}
+				Collections.sort(result);
 				reader.close();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -49,30 +50,20 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	}
 	
 	@Override
-	public HashMap<String, Integer> countSymptoms(List<String> symptomsList) {
-		HashMap<String, Integer> symptomsHashMap = new HashMap<String, Integer>();
+	public LinkedHashMap<String, Integer> countSymptoms(List<String> symptoms) {
+		LinkedHashMap<String, Integer> symptomsMap = new LinkedHashMap<String, Integer>();
 		
-		for(String symptom : symptomsList) {
-			if(symptomsHashMap.containsKey(symptom)) {
-				symptomsHashMap.put(symptom, symptomsHashMap.get(symptom) + 1);
-			} else {
-				symptomsHashMap.put(symptom, 1);
+		for(String symptom : symptoms) {
+			if(symptomsMap.containsKey(symptom) == false) {
 			}
 		}
-		
-		return symptomsHashMap;
+		return symptomsMap;
 	}
 	
 	@Override
-	public TreeMap<String, Integer> sortSymptoms(HashMap<String, Integer> symptomsList) {
-		TreeMap<String, Integer> sortedSymptomsTreeMap = new TreeMap<String, Integer>(symptomsList);
-		return sortedSymptomsTreeMap;
-	}
-	
-	@Override
-	public void writeSymptomToFile(TreeMap<String, Integer> symptomsList) throws IOException {
-		FileWriter writer = new FileWriter("ressources/result.out");
-		for(Map.Entry<String, Integer> entry : symptomsList.entrySet()) {
+	public void writeSymptomToFile(LinkedHashMap<String, Integer> symptoms) throws IOException {
+		FileWriter writer = new FileWriter("ressources"+ System.getProperty("file.separator") + "result.out");
+		for(Map.Entry<String, Integer> entry : symptoms.entrySet()) {
 			writer.write(entry.getKey() + " = " + entry.getValue() + "\n");
 		}
 		writer.close();

@@ -1,8 +1,7 @@
 package heme.analytics;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.TreeMap;
 
 /** 
  * AnalyticsCounter analyzes a a list with various symptoms. 
@@ -16,18 +15,16 @@ import java.util.TreeMap;
 public class AnalyticsCounter
 {
 	private static List<String> symptoms;
-	private static HashMap<String, Integer> symptomsHashMap;
-	private static TreeMap<String, Integer> symptomsOrderedMap;
+	private static LinkedHashMap<String, Integer> symptomsMap;
 	
 	public static void main(String args[]) throws Exception 
 	{
-		ReadSymptomDataFromFile file = new ReadSymptomDataFromFile("ressources/symptoms.txt");
+		ReadSymptomDataFromFile file = new ReadSymptomDataFromFile("ressources" + System.getProperty("file.separator") + "symptoms.txt");
 		
 		symptoms = file.getSymptoms();
-		symptomsHashMap = file.countSymptoms(symptoms);
-		symptomsOrderedMap = file.sortSymptoms(symptomsHashMap);
+		symptomsMap = file.countSymptoms(symptoms);
 		
-		file.writeSymptomToFile(symptomsOrderedMap);
+		file.writeSymptomToFile(symptomsMap);
 		
 	}
 }

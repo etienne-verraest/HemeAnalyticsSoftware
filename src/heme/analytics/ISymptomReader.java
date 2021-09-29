@@ -1,9 +1,8 @@
 package heme.analytics;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.TreeMap;
 
 /**
  * Anything that will read symptom data from a source
@@ -24,20 +23,14 @@ public interface ISymptomReader {
 
 	/** 
 	 * This method counts symptoms given in a text file
-	 * @param symptomsList
+	 * @param symptoms
 	 * @return HashMap<String, Integer>
 	 */
-	HashMap<String, Integer> countSymptoms(List<String> symptomsList);
-	
-	/** 
-	 * This method sorts symptoms given in a HashMap
-	 * @param symptomsList
-	 * @return TreeMap<String, Integer>
-	 */
-	TreeMap<String, Integer> sortSymptoms(HashMap<String, Integer> symptomsList);
+	LinkedHashMap<String, Integer> countSymptoms(List<String> symptoms);
 
 	/** 
 	 * This method writes counted and ordered symptoms on a file
+	 * @param LinkedHashMap of counted symptoms
 	 */
-	void writeSymptomToFile(TreeMap<String, Integer> symptomsList) throws IOException;
+	void writeSymptomToFile(LinkedHashMap<String, Integer> symptoms) throws IOException;
 }

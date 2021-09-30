@@ -13,18 +13,16 @@ import java.util.List;
  */
 
 public class AnalyticsCounter
-{
-	private static List<String> symptoms;
-	private static LinkedHashMap<String, Integer> symptomsMap;
-	
+{	
 	public static void main(String args[]) throws Exception 
 	{
-		ReadSymptomDataFromFile file = new ReadSymptomDataFromFile("ressources" + System.getProperty("file.separator") + "symptoms.txt");
 		
-		symptoms = file.getSymptoms();
-		symptomsMap = file.countSymptoms(symptoms);
+		ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile("ressources" + System.getProperty("file.separator") + "symptoms.txt");
 		
-		file.writeSymptomToFile(symptomsMap);
+		List<String> symptoms = readSymptomDataFromFile.getSymptoms();
+		LinkedHashMap<String, Integer> symptomsMap = readSymptomDataFromFile.countSymptoms(symptoms);
+		
+		readSymptomDataFromFile.writeSymptomToFile(symptomsMap);
 		
 	}
 }

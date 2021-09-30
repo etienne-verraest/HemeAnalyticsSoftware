@@ -55,6 +55,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		
 		for(String symptom : symptoms) {
 			if(symptomsMap.containsKey(symptom) == false) {
+				symptomsMap.put(symptom, Collections.frequency(symptoms, symptom));
 			}
 		}
 		return symptomsMap;

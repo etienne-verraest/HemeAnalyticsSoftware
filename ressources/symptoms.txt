@@ -30,6 +30,7 @@ low blood pressure
 inflamation
 inflamation
 anxiety
+COVID
 cough
 inflamation
 nausea
@@ -70,6 +71,7 @@ blurred vision
 high blood pressure
 low blood pressure
 dialated pupils
+COVID
 high blood pressure
 tremor
 high blood pressure
@@ -98,3 +100,4 @@ anxiety
 anxiety
 cough
 blurred vision
+COVID

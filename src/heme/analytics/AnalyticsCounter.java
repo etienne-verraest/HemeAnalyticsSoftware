@@ -16,7 +16,7 @@ public class AnalyticsCounter
 {	
 	public static void main(String args[]) throws Exception 
 	{
-		
+		// COMMENTAIRE
 		ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile("ressources" + System.getProperty("file.separator") + "symptoms.txt");
 		
 		List<String> symptoms = readSymptomDataFromFile.getSymptoms();
